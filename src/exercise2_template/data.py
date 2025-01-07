@@ -49,4 +49,3 @@ if __name__ == "__main__":
     print(f"Shape of a training point {(train_set[0][0].shape, train_set[0][1].shape)}")
     print(f"Shape of a test point {(test_set[0][0].shape, test_set[0][1].shape)}")
     show_image_and_target(train_set.tensors[0][:25], train_set.tensors[1][:25])
-

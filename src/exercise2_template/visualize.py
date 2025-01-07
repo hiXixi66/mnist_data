@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
 import torch
 import typer
-from exercise2_template.model import MyAwesomeModel
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
+
+from exercise2_template.model import MyAwesomeModel
 
 
 def visualize(model_checkpoint: str, figure_name: str = "embeddings.png") -> None:
@@ -43,5 +44,5 @@ def visualize(model_checkpoint: str, figure_name: str = "embeddings.png") -> Non
     plt.savefig(f"reports/figures/{figure_name}")
 
 
-if __name__ == "__main__":
+def main() -> None:
     typer.run(visualize)
