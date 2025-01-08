@@ -25,7 +25,11 @@ Requires-Dist: mkdocstrings-python==1.12.2; extra == "dev"
 
 # exercise2_template
 
-exercise
+python src/exercise2_template/train.py train   
+
+python src/exercise2_template/train.py evaluate models/model.pth
+
+python src/exercise2_template/visualize.py models/model.pth
 
 ## Project structure
 

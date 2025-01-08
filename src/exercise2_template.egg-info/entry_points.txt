@@ -1,0 +1,3 @@
+[console_scripts]
+train = exercise2_template.train:main
+visualize = exercise2_template.visualize:main

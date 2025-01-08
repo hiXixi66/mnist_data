@@ -2,6 +2,8 @@
 requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
+
+
 [project]
 name = "exercise2_template"
 version = "0.0.1"
@@ -9,6 +11,9 @@ description = "exercise"
 authors = [
   { name = "Xixi", email = "your@email.com" },
 ]
+
+
+
 
 keywords = ["machine learning", "MLOps"]
 classifiers = [
@@ -27,6 +32,12 @@ dev = {file = ['requirements_dev.txt']}
 
 [tool.ruff]
 line-length = 120
+select = ["I"]
 
 [tool.coverage.run]
 omit = ["tests/*"]
+
+[project.scripts]
+train = "exercise2_template.train:main"
+visualize = "exercise2_template.visualize:main"
+evaluate = "my_project.evaluate:main"

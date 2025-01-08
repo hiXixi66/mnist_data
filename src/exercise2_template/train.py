@@ -4,13 +4,15 @@ import torch
 import typer
 from torch import nn
 
-
+from omegaconf import DictConfig
 import matplotlib.pyplot as plt  # only needed for plotting
 import torch
 from mpl_toolkits.axes_grid1 import ImageGrid  # only needed for plotting
-
+import os
 DATA_PATH = "data/raw"
 
+import hydra
+import torch.optim as optim
 
 def corrupt_mnist() -> tuple[torch.utils.data.Dataset, torch.utils.data.Dataset]:
     """Return train and test dataloaders for corrupt MNIST."""
@@ -33,13 +35,10 @@ def corrupt_mnist() -> tuple[torch.utils.data.Dataset, torch.utils.data.Dataset]
     test_set = torch.utils.data.TensorDataset(test_images, test_target)
 
     return train_set, test_set
-# from model import MyAwesomeModel
 
-# from data import corrupt_mnist
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 
-# app = typer.Typer()
 
 class MyAwesomeModel(nn.Module):
     """My awesome model."""
@@ -65,8 +64,13 @@ class MyAwesomeModel(nn.Module):
         return self.fc1(x)
 
 # @app.command()
-def train(lr: float = 1e-3, batch_size: int = 32, epochs: int = 10) -> None:
+
+def train(cfg) -> None:
+    # optimizer = hydra.utils.instantiate(cfg.optimizer)
     """Train a model on MNIST."""
+    lr = cfg.hyperparameters.lr
+    batch_size = cfg.hyperparameters.batch_size
+    epochs = cfg.hyperparameters.epochs
     print("Training day and night")
     print(f"{lr=}, {batch_size=}, {epochs=}")
 
@@ -107,10 +111,15 @@ def train(lr: float = 1e-3, batch_size: int = 32, epochs: int = 10) -> None:
 
 
 
+@hydra.main(config_path="/Users/xixiwang/Desktop/DTUcoures/machine-learning-operations/mnist_data/configs/conf", config_name="config.yaml")
 
+def main(cfg: DictConfig):
+    os.chdir(hydra.utils.to_absolute_path("."))
+    
+    train(cfg)
 
-def main():
-    train() 
+if __name__ == "__main__":
+    main()
 
 
 

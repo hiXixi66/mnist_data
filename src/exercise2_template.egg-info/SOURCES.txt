@@ -13,6 +13,7 @@ src/exercise2_template/visualize.py
 src/exercise2_template.egg-info/PKG-INFO
 src/exercise2_template.egg-info/SOURCES.txt
 src/exercise2_template.egg-info/dependency_links.txt
+src/exercise2_template.egg-info/entry_points.txt
 src/exercise2_template.egg-info/requires.txt
 src/exercise2_template.egg-info/top_level.txt
 tests/test_api.py

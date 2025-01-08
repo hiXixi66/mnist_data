@@ -15,7 +15,7 @@ COPY data/ data/
 COPY models/ models/
 COPY reports/ reports/
 
-RUN --mount=type=cache,target=~/pip/.cache pip install -r requirements.txt --no-cache-dir
-RUN pip install . --no-deps --no-cache-dir --verbose
+RUN pip install -r requirements.txt --no-cache-dir
+RUN pip install . --no-deps --no-cache-dir
 
-ENTRYPOINT ["python", "-u", "src/exercise2_template/train.py"]
+ENTRYPOINT ["python", "-u", "src/exercise2_template/evaluate.py"]

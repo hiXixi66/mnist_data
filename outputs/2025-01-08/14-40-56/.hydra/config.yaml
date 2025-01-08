@@ -1,0 +1,7 @@
+hyperparameters:
+  batch_size: 64
+  lr: 0.0001
+  hidden_dim: 128
+  x_dim: 784
+  latent_dim: 2
+  epochs: 2
